@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Statistics from './components/Statistics/Statistics';
 import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
 import Section from './components/Section/Section';
@@ -7,15 +7,20 @@ const App = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
-  const [total, setTotal] = useState(0);
+  const [name, setName] = useState('');
+  // const [total, setTotal] = useState(0);
   // const [positivePercentage, setPositivePercentage] = useState(0);
 
-  const handleIncrement = () => {
+  const handleIncrement = event => {
+    //  setName(event.target.name);
+    // setName(prevState => ({
+    //   [name]: prevState[name] + 1,
+    // }));
     setGood(good + 1);
     setNeutral(neutral + 1);
     setBad(bad + 1);
-    setTotal(good + neutral + bad);
-    // setPositivePercentage(Math.round(good * 100));
+    // setTotal((good + 1) + (neutral + 1) + (bad + 1));
+    // setPositivePercentage((Math.round((good * 100) / total)));
   }
 
   return (
@@ -29,12 +34,14 @@ const App = () => {
           good={good}
           neutral={neutral}
           bad={bad}
-          total={total}
+          // total={total}
           // positivePercentage={positivePercentage}
         />
       </Section>
     );
 }
+
+export default App;
 
 // class App extends Component {
 //   state = {
@@ -86,5 +93,4 @@ const App = () => {
 //     );
 //   }
 // }
-
-export default App;
+// export default App;
